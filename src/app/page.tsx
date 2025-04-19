@@ -1,9 +1,9 @@
-import Story from "@/components/layout/home/Story";
+import Hero from "@/components/layout/home/Hero";
 
 export default function Home() {
   return (
-    <div className="w-full px-3 container mx-auto">
-      <Story />
+    <div className="w-full">
+      <Hero />
     </div>
   );
 }
