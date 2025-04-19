@@ -2,36 +2,68 @@
 
 import { Button } from "@/components/ui/button";
 import { heroData } from "@/data/hero";
-import { HeroDataType } from "@/types/heroTypes"
+import { HeroDataType } from "@/types/heroTypes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [index, setIndex] = useState(0);
   const [heroContent, setHeroContent] = useState<HeroDataType>(heroData[0]);
-
   const router = useRouter();
-  
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex = (index + 1) % heroData.length;
+      setIndex(nextIndex);
+      setHeroContent(heroData[nextIndex]);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [index]);
+
   return (
-    <div className="h-[90vh] bg-secondary flex flex-col flex-row px-3 items-center justify-center gap-4 md:px-52">
-      <div>
-        <h1 className="text-4xl font-bold ">{heroContent.title}</h1>
-        <p className="text-lg text-gray-700 mt-2">{heroContent.description}</p>
-        <Button
-          onClick={() => router.push(heroContent.buttonLink || "/products")}
-          size={"lg"}
-        >{heroContent.buttonText}</Button>
+    <section className="md:min-h-[90vh] h-fit w-full bg-secondary">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-full my-auto md:py-20">
+        {/* Image - full width on mobile */}
+        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[100%] order-first md:order-last">
+          <Image
+            src={heroContent.image}
+            alt={heroContent.title}
+            fill
+            className="object-cover md:rounded-xl md:shadow-xl"
+            priority
+          />
+        </div>
+
+        {/* Text Content */}
+        <div className="px-5 py-10 md:px-16 lg:px-24 space-y-6 text-left">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+            {heroContent.title}
+          </h1>
+          <p className="text-lg md:text-xl text-gray-500 max-w-xl mx-auto md:mx-0">
+            {heroContent.description}
+          </p>
+          <div className="flex gap-4">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 transition text-white font-semibold cursor-pointer"
+              onClick={() => router.push(heroContent.buttonLink || "/market")}
+            >
+              {heroContent.buttonText}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="cursor-pointer font-semibold transition"
+              onClick={() => router.push("/register")}
+            >
+              Open Account
+            </Button>
+          </div>
+        </div>
       </div>
-      <div>
-        <Image
-          src={heroContent.image}
-          alt={heroContent.title}
-          width={500}
-          height={500}
-          className="rounded-lg shadow-md object-cover"
-        />
-      </div>
-    </div>
-  )
-}
-export default Hero
+    </section>
+  );
+};
+
+export default Hero;
