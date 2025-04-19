@@ -1,4 +1,12 @@
 export interface StoryType {
-  watched: any[];
-  data: any;
+  watched: number[];
+  data: {
+    title: string;
+    description: string;
+    image: string;
+    genre: string;
+    releaseDate: string;
+    rating: number;
+    duration: number;
+  };
 }

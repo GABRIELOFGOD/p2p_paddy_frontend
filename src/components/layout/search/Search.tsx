@@ -2,12 +2,36 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SearchModal = ({ closeSearch }: { closeSearch: () => void }) => {
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeSearch();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeSearch]);
+
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    // Simulate a search request
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // Here you would typically call your search API and update the state with the results
+    // setSearchResults(results);
+    setLoading(false);
+    setSearchInput("");
+  }
   
   return (
     <div className="fixed top-0 left-0 h-screen w-full bg-background/30 backdrop-blur-3xl px-3 py-20 justify-center flex z-50">
