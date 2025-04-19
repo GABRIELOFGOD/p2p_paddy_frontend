@@ -11,7 +11,7 @@ const Header = () => {
   const [triggerSearch, setTriggerSearch] = useState(false);
   
   return (
-    <div className="flex justify-between gap-5 bg-background backdrop-blur-lg shadow-sm px-3 py-2 w-full">
+    <div className="flex justify-between gap-5 bg-background backdrop-blur-lg shadow-sm px-3 py-2 w-full z-40 sticky top-0 left-0">
       <div className="w-fit h-fit bg-black my-auto z-50">
         <Image
           src={"/brand/p2p_logo.png"}
@@ -28,7 +28,9 @@ const Header = () => {
           <SideSheet />
         {/* </div> */}
       </div>
-      {triggerSearch && (<SearchModal closeSearch={() => setTriggerSearch(false)} />)}
+      {triggerSearch && (<div className="absolute">
+        <SearchModal closeSearch={() => setTriggerSearch(false)} />
+      </div>)}
     </div>
   )
 }
