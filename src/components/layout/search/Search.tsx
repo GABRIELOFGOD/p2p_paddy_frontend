@@ -54,6 +54,7 @@ const SearchModal = ({ closeSearch }: { closeSearch: () => void }) => {
             type="submit"
             className="w-full mt-2 bg-primary text-white hover:bg-primary/80 font-semibold text-lg disabled:cursor-not-allowed"
             size={"lg"}
+            onClick={handleSearch}
             disabled={loading || !searchInput}
           >Chek am for me!</Button>
         </form>
