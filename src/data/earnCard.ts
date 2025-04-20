@@ -14,7 +14,7 @@ export const earnCardData: EarnCardProps[] = [
     link: "/market",
   },
   {
-    topic: "Tell somebody about us",
+    topic: "Tell person about us",
     title: "Share update and make money. Soft life!",
     description: "You fit just tell your paddy and your family about us make dem register and you go dey earn PADDY POINTS steady. Remember say the more people wey you tell, the more PADDY POINTS wey you go dey earn. And with PADDY POINTS, money na water!",
     link: "/register",

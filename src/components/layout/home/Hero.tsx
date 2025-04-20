@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <section className="h-fit w-full bg-secondary">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-full my-auto md:py-20">
-        {/* Image - full width on mobile */}
+        {/* Image Section */}
         <div className="relative w-full z-20 h-[300px] sm:h-[400px] md:h-[100%] order-first md:order-last">
           <Image
             src={heroContent.image}
@@ -61,6 +61,20 @@ const Hero = () => {
             </Button>
           </div>
         </div>
+      </div>
+
+      {/* === Dot Pagination Indicator === */}
+      <div className="flex justify-center items-center gap-2 py-6">
+        {heroData.map((_, i) => (
+          <div
+            key={i}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              index === i
+                ? "w-6 bg-primary"
+                : "w-2 bg-gray-400/50"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
