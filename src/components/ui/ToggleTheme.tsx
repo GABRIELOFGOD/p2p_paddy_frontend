@@ -1,19 +1,41 @@
 'use client';
 import { useTheme } from '@/app/context/ThemeContext';
+import { Moon, Sun } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-16 h-8 rounded-full transition-colors duration-300 bg-gray-300 dark:bg-primary flex items-center p-1"
+      aria-label="Toggle Theme"
+      className="relative w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 bg-gray-200 dark:bg-primary text-yellow-500 dark:text-white hover:scale-105 active:scale-95 shadow-md my-auto"
     >
-      <div
-        className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out ${
-          theme === 'dark' ? 'translate-x-8' : ''
-        }`}
-      />
+      <AnimatePresence mode="wait" initial={false}>
+        {isDark ? (
+          <motion.span
+            key="moon"
+            initial={{ opacity: 0, rotate: -90 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: 90 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Moon size={20} />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="sun"
+            initial={{ opacity: 0, rotate: 90 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: -90 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Sun size={20} />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </button>
   );
 }
