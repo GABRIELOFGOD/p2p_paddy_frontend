@@ -5,7 +5,7 @@ import { WhatCanYouSellType } from "@/data/whatToSell";
 import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const WhatCanYouSellCard = ({ 
+const WhatCanYouSellCard = ({
   icon: Icon,
   link, text, topic
  }: WhatCanYouSellType) => {

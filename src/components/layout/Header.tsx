@@ -24,9 +24,9 @@ const Header = () => {
       <div className="flex gap-3 my-auto">
         <Search size={20} className="my-auto cursor-pointer" onClick={() => setTriggerSearch(true)} />
         <ThemeToggle />
-        {/* <div className="w-[300px]"> */}
+        <div className="my-auto">
           <SideSheet />
-        {/* </div> */}
+        </div>
       </div>
       {triggerSearch && (<div className="absolute">
         <SearchModal closeSearch={() => setTriggerSearch(false)} />

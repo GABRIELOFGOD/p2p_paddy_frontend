@@ -22,7 +22,7 @@ const SideSheet = () => {
   return (
     <div>
       <Sheet>
-        <SheetTrigger>
+        <SheetTrigger className="my-auto">
           <Menu size={20} className="my-auto cursor-pointer" />
         </SheetTrigger>
         <SheetContent side="left">

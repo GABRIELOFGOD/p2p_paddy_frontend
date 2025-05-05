@@ -24,6 +24,7 @@ const Footer = () => {
             <p className="font-bold text-xl ">Other links</p>
           </div>
         </div>
+        <p>&copy; P2PPADDY {new Date().getFullYear()} all rights reserved</p>
       </div>
     </div>
   )
