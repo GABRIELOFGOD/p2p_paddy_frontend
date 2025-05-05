@@ -1,3 +1,4 @@
+import { whyUs } from "@/data/story"
 import Image from "next/image"
 
 const Security = () => {
@@ -14,12 +15,25 @@ const Security = () => {
               className="w-lg h-fit"
             />
           </div>
-          <div className="my-auto w-full">
-            
+          <div className="my-auto w-full md:ml-10">
+            <p className="text-2xl md:text-4xl font-bold text-shadow-sm">Why make you try us?</p>
+            <div className="flex flex-col gap-5 mt-10">
+              {whyUs.map(({ text, icon: Icon }, i) => (
+                <div
+                  className="flex gap-3"
+                  key={i}
+                >
+                  <div className="bg-foreground text-secondary rounded-full w-10 h-10 justify-center items-center flex">
+                    <Icon />
+                  </div>
+                  <p className="text-lg font-semibold my-auto">{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
   )
 }
-export default Security
+export default Security;

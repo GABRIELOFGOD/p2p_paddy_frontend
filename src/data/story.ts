@@ -1,4 +1,5 @@
 import { StoryType } from "@/types/story.types";
+import { Heart, Shield, ShieldX, Zap } from "lucide-react";
 
 export const stories: StoryType[] = [
   {
@@ -109,4 +110,23 @@ export const stories: StoryType[] = [
       duration: 88,
     },
   },
+]
+
+export const whyUs = [
+  {
+    text: "We be your PADDY!",
+    icon: Heart
+  },
+  {
+    text: "Fast and transparent buying and selling",
+    icon: Zap
+  },
+  {
+    text: "Security of transaction and funds",
+    icon: Shield
+  },
+  {
+    text: "No scam zone",
+    icon: ShieldX
+  }
 ]

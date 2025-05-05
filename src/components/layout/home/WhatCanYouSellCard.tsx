@@ -15,8 +15,8 @@ const WhatCanYouSellCard = ({
     <div>
       <div className="w-full rounded-lg h-full shadow-md md:p-8 p-5 border border-border/50 flex flex-col gap-5 hover:shadow-lg ease-linear duration-200 hover:scale-3d">
         <div className="flex justify-between">
-          <div className="flex items-center justify-center w-16 rounded-full h-16 bg-primary/30 text-primary">
-            <Icon size={30} />
+          <div className="flex items-center justify-center w-12 rounded-full h-12 bg-primary/30 text-primary">
+            <Icon size={25} />
           </div>
           <Button
             variant={"ghost"}
